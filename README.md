@@ -1,8 +1,8 @@
-# ASHRAE - Great Energy Predictor III
+# ASHRAE - Great Energy Predictor III Final Score: 8th/3595
 
-## Basic information in the resources csv files
+## Key information in the resources csv files
 
-    There are 6 csv files: 'train.csv', 'building_metadata.csv', 'weather_test.csv', 'weather_train.csv', 'test.csv', 'sample_submission.csv'
+There are 6 csv files: 'train.csv', 'building_metadata.csv', 'weather_test.csv', 'weather_train.csv', 'test.csv', 'sample_submission.csv'
 
 1. train.csv
 
@@ -22,15 +22,7 @@
 
     primary_use - Indicator of the primary category of activities for the building based on EnergyStar property type definitions
 
-    square_feet - Gross floor area of the building
-
-    year_built - Year building was opened
-
-    floorcount - Number of floors of the building 
-
 3. weather(train/test).csv 
-
-    Weather data from a meteorological station as close as possible to the site.
 
     site_id
 
@@ -39,14 +31,6 @@
     cloud_coverage - Portion of the sky covered in clouds, in oktas
 
     dew_temperature - Degrees Celsius
-
-    precip_depth_1_hr - Millimeters
-
-    sea_level_pressure - Millibar/hectopascals
-
-    wind_direction - Compass direction (0-360)
-
-    wind_speed - Meters per second
 
 4. test.csv
 
@@ -70,19 +54,9 @@ A valid sample submission.
 
 2. reduce the memory by change int to int16 and float to float 16
 
-3. final predictor 'meter_reading' has a right-tailed distribution, therefore use log and power_transform to normalize.
+3. final predictor 'meter_reading' has a right-tailed distribution, therefore use log to normalize.
 
 4. merged the csv by building_id, site_id and timestamp
-
-5. only import important csv files: 'train.csv', 'building_metadata.csv', 'weather_test.csv', 'weather_train.csv', 'train_merge.csv'
-
-## information print
-
-All the information are saved in Output/txt file
-
-1. get the columns names and shapes of each csv files
-
-2. get the head, describe information and get the missing values for each columns
 
 ## visualize the important information
 
@@ -145,6 +119,8 @@ figures are too large so not showing here.
 * Abnormally high readings from building 1099: These values are just absurdly high and don't fit an established pattern.
 
 # second cleanup
+
+https://www.kaggle.com/kernels/scriptcontent/24052407/download
 
 * More than 48 hours with zero readings which do not occur during the typical seasons
 
@@ -234,3 +210,5 @@ figures are too large so not showing here.
 * 6 0.0~0.5 float elements list were generated randomly to weight submissions to fit the leaking data. (Not fitting well) lb = 0.967
 
 * PSO (Particle swarm optimization) is the best way. Best lb = 0.946 (Top 2% 62/3669)
+
+* average all these 6 submission and get Top 1% 8th/3595
